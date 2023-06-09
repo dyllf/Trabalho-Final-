@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RENTALCAR.CV</title>
+   <!-- <link rel="stylesheet" href="static/CSS/styles.css" /> -->
+  <style>
+/* font importing */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+/* reseting css rules */
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  outline: none;
+  font-family: "Roboto", sans-serif;
+}
+
+:root {
+  --orange: #002747;
+  --blue: #ff6600;
+  --gray: #fefefe;
+}
+
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+header {
+  width: 100%;
+  height: 500px;
+  background: var(--orange);
+}
+
+.content {
+  max-width: 1000px;
+  min-width: 300px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+nav {
+  width: 100%;
+  height: 125px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  font-size: 24px;
+  color: var(--blue);
+  cursor: pointer;
+}
+
+nav ul {
+  display: flex;
+  flex-direction: row;
+}
+
+nav ul li {
+  list-style: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+nav ul li a {
+  color: var(--blue);
+  text-decoration: none;
+}
+
+nav ul li a:hover {
+  color: #00285f83;
+}
+
+nav ul button {
+  border: 1px solid var(--blue);
+  background: transparent;
+  padding: 8px 40px;
+  cursor: pointer;
+  margin-left: 30px;
+  color: var(--blue);
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+nav ul button:hover {
+  transition: background, color 0.6s;
+  background: var(--blue);
+  color: white;
+}
+
+.content .header-block {
+  max-width: 1000px;
+  min-width: 300px;
+  height: 450px;
+  background: var(--blue);
+  border-radius: 8px;
+  box-shadow: 1px 0px 10px 0px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 1px 0px 10px 0px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 1px 0px 10px 0px rgba(0, 0, 0, 0.5);
+  position: relative;
+  z-index: 10;
+  padding: 10px;
+}
+
+.header-block img {
+  width: 50%;
+  position: absolute;
+  right: 2%;
+  bottom: 2%;
+}
+
+.header-block .text {
+  position: absolute;
+  bottom: 30%;
+  left: 15%;
+}
+
+.header-block .text h2 {
+  color: white;
+  margin-bottom: 20px;
+  text-align: right;
+  transform: translateX(-20px);
+  transition: transform 0.5s;
+}
+
+.header-block .text p {
+  max-width: 280px;
+  color: white;
+  text-align: right;
+  transform: translateX(-20px);
+  transition: transform 0.4s;
+}
+
+/* Product Catalog */
+
+section .catalog {
+  width: 100vw;
+  padding: 100px;
+}
+
+section .filter-card {
+  width: 980px;
+  height: 150px;
+  background: var(--gray);
+  border-radius: 8px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-input {
+  width: 700px;
+  height: 50px;
+  border: none;
+  border-radius: 4px 0px 0px 4px;
+  text-indent: 10px;
+}
+
+.search-button {
+  width: 150px;
+  height: 50px;
+  border-radius: 0px 4px 4px 0px;
+  border: none;
+  background: var(--blue);
+  color: white;
+  cursor: pointer;
+  font-size: 1.1em;
+  transition: 0.2s ease;
+}
+
+.search-button:hover {
+  background: #dedede;
+  color: var(--blue);
+}
+
+.title-wrapper-catalog {
+  margin-top: 200px;
+  padding-bottom: 20px;
+}
+
+section .card-wrapper {
+  max-width: 1000px;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  grid-gap: 30px;
+  padding-top: 50px;
+}
+
+section .card-item {
+  height: 400px;
+  background: var(--gray);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.card-content {
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.card-item img {
+  width: 85%;
+}
+
+.card-item h4 {
+  width: 90%;
+}
+
+.card-item p {
+  width: 90%;
+  font-style: italic;
+  color: #00000070;
+}
+
+.card-item button {
+  width: 90%;
+  padding: 15px 0px;
+  border: none;
+  background: var(--blue);
+  border-radius: 4px;
+  color: white;
+  font-weight: bold;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: 0.3s ease;
+  margin-bottom: 10px;
+}
+
+.card-item button:hover {
+  background: #dedede;
+  color: var(--blue);
+}
+
+/* About */
+
+.about {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 10px;
+}
+
+.about-content {
+  max-width: 1000px;
+  min-width: 300px;
+  height: 600px;
+  background: #dedede3b;
+  margin: 0 auto;
+  border-radius: 8px;
+  z-index: 10;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.left {
+  width: 25%;
+  min-width: 300px;
+  height: 100%;
+  background: #000000a1;
+  border-radius: 8px;
+}
+
+.right {
+  width: 65%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding-top: 10%;
+}
+
+.right h3 {
+  text-align: right;
+  width: 90%;
+  margin-bottom: 20px;
+}
+
+.right p {
+  max-width: 90%;
+  font-size: 1em;
+  letter-spacing: 2px;
+  text-align: right;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+/* Features */
+.features {
+  width: 100%;
+  height: 100%;
+  background: var(--gray);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 0px;
+}
+
+.title-wrapper-features {
+  padding: 20px 0px;
+}
+
+.feature-card-block {
+  max-width: 1000px;
+  min-width: 300px;
+  height: 600px;
+  background: white;
+  margin: 0 auto;
+  border-radius: 8px;
+  z-index: 10;
+  padding: 50px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+  grid-gap: 30px;
+}
+
+.feature-card-item {
+  max-width: 420px;
+  height: 150px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  border: 1px solid #dedede3b;
+  border-radius: 4px;
+}
+
+.feature-text-content {
+  max-width: 60%;
+  margin: 5px;
+}
+
+.feature-card-item img {
+  width: 64px;
+  height: 64px;
+}
+
+/* Footer */
+footer {
+  width: 100%;
+  height: 250px;
+}
+
+footer .main {
+  width: 100%;
+  height: 200px;
+  background: var(--orange);
+  padding: 20px 10px;
+}
+
+.footer-links {
+  max-width: 1000px;
+  min-width: 300px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.footer-company,
+.footer-rental,
+.footer-contact,
+.footer-social {
+  color: rgb(255, 255, 255);
+  height: 100%;
+  min-height: 100px;
+}
+
+.footer-links h4 {
+  margin-bottom: 10px;
+}
+
+.footer-links {
+  margin-bottom: 8px;
+}
+
+.main .footer-social img {
+  width: 32px;
+  height: 32px;
+}
+
+footer .last {
+  width: 100%;
+  height: 50px;
+  background: var(--blue);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Responsive adjustments */
+
+@media (max-width: 576px) {
+  nav ul li {
+    display: none;
+  }
+
+  .header-block img {
+    width: 70%;
+    position: absolute;
+    right: 16%;
+    top: 30%;
+  }
+
+  .header-block .text {
+    position: absolute;
+    bottom: 10%;
+    left: 15;
+  }
+
+  section .filter-card {
+    width: 390px;
+    padding: 0px 10px;
+  }
+
+  .search-input {
+    max-width: 700px;
+    min-width: 240px;
+  }
+
+  .search-button {
+    max-width: 150px;
+    min-width: 80px;
+  }
+
+  .about {
+    margin-top: 100px;
+  }
+
+  .title-wrapper-about {
+    margin-bottom: 20px;
+  }
+  .about-content {
+    flex-direction: column;
+    height: 100%;
+  }
+  .left {
+    display: none;
+  }
+  .right {
+    width: 90%;
+  }
+
+  .right p {
+    width: 100%;
+    margin: 0px;
+    text-align: left;
+  }
+
+  .features {
+    height: 100%;
+  }
+
+  .feature-card-block {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  footer {
+    height: 100%;
+  }
+
+  footer .main {
+    height: 100%;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    padding-left: 10%;
+  }
+
+  sobress {
+    text-align: justify;
+  }
+}
+
+  </style>
+  </head>
+  <body>
+    <header>
+      <div class="content">
+        <nav>
+          <p class="brand"><strong>HOME</strong></p>
+          <ul>
+            <li><a href="#catalog">Carros</a></li>
+            <li><a href="#about">Informações</a></li>
+            <li><a href="#features">Caracteristicas</a></li>
+            
+            <button 
+            transition: background, 
+            color 0.6s;
+            background: var(--blue);
+            color: white;>
+              <a href="/login">Login</a>
+            </button>
+          
+          </ul>
+        </nav>
+        <div class="header-block">
+          <div class="text">
+            <h2>O melhor carro para voce!</h2>
+            <p>
+             A EMPRESA DE ALUGUEL DE CARROS EM CABO-VERDE, COM OS MELHORES PREÇOS E COM A MAIOR QUALIDADE DO PRODUTO!
+            </p>
+          </div>
+          <img src="static/images/hilux.png" alt="Car" />
+        </div>
+      </div>
+    </header>
+    <section class="catalog" id="catalog">
+      <div class="content">
+        <div class="title-wrapper-catalog">
+          <p>ESCOLHE QUAL CARRO VOCE QUER?</p>
+          <h3>LISTA DOS VEICULOS DISPONIVEIS</h3>
+        </div>
+        <div class="filter-card">
+          <input
+            type="text"
+            class="search-input"
+            placeholder="Escolhe o carro da sua preferencia"
+          />
+          <button class="search-button"
+          transition: background, 
+            color 0.6s;
+            background: var(--blue);
+            color: white;>
+              <a href="/Veiculos">Reserva</a>
+          
+        </button>
+        </div>
+        <div class="card-wrapper">
+          <div class="card-item">
+            <img src="static/images/hilux.png" alt="Car" />
+            <div class="card-content">
+              <h3>Toyota Hilux</h3>
+              <p>
+                <p>-Lugares: 8;</p>
+                <p> -Confortavel;</p>
+                <p>-OFF-ROAD.</p>
+              </p>
+            
+            </div>
+          </div>
+          <div class="card-item">
+            <img src="static/images/208.2.png" alt="Car" />
+            <div class="card-content">
+              <h3>Peugeot 208</h3>
+              <p>
+                <p>-Lugares: 5;</p>
+                <p>-Tecnologico;</p>
+                <p>-Confortavel.</p>
+              </p>
+            
+            </div>
+          </div>
+          <div class="card-item">
+            <img src="static/images/prado.png" alt="Car" />
+            <div class="card-content">
+              <h3> Toyota Prado</h3>
+              <p>
+                <p>-Lugares: 10;</p>
+                <p>-Confortavel;</p>
+                <p>-Tecnologico.</p>
+              </p>
+              
+            </div>
+          </div>
+          <div class="card-item">
+            <img src="static/images/jogger.png" alt="Car" />
+            <div class="card-content">
+              <h3>Dacia Jogger</h3>
+              <p>
+                <p>-Lugares: 5;</p>
+                <p>-Tecnologico;</p>
+                <p>-Economico.</p>
+              </p>
+             
+            </div>
+          </div>
+          <div class="card-item">
+            <img src="static/images/duster.png" alt="Car" />
+            <div class="card-content">
+              <h3> Dacia Duster</h3>
+              <p>
+                <p>-Lugares: 6;</p>
+                <p>-confortavel;</p>
+                <p>-Economico.</p>
+              </p>
+             
+            </div>
+          </div>
+          <div class="card-item">
+            <img src="static/images/c-hr2.png" alt="Car" />
+            <div class="card-content">
+              <h3>Toyota C-HR</h3>
+              <p>
+                <p>-Lugares: 5;</p>
+                <p>-Confortavel;</p>
+                <p>-Eletrico;</p>
+              </p>
+             
+            </div>
+         
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="content">
+        <div class="title-wrapper-about">
+          <p>Sobre a nossa Empresa!</p>
+          <h3>Informaçṍes</h3>
+        </div>
+        <div class="about-content">
+          <div class="left">
+            <img src="static/images/about.png" alt="About" />
+          </div>
+          <div class="right">
+            <h3>A Tecnologia e os Motores.</h3>
+            <p class="sobress">
+        Somos uma empresa de aluguel de carros de Cabo Verde com sede na ilha de São Vicente, com estabelecimentos nas zonas de Vila Nova, Monte Sossego, Chã de Alecrim.
+      Nos promovemos muito a tecnologia com os motores de carros e a  tecnologia tem sido uma grande aliada no desenvolvimento de motores de carros cada vez mais eficientes e sustentáveis. Com o avanço da eletrônica e da inteligência artificial, os motores estão se tornando mais inteligentes e adaptáveis às necessidades dos motoristas e com tudo isso a inteligência artificial tem sido utilizada para otimizar o desempenho dos motores, permitindo que eles se adaptem às condições do ambiente e do tráfego.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="features" id="features">
+      <div class="content">
+        <div class="title-wrapper-features">
+          <p>Aqui tem a nossas</p>
+          <h3>Caracteristicas</h3>
+        </div>
+        <div class="feature-card-block">
+          <div class="feature-card-item">
+            <img src="static/images/confiança2.png" alt="Feature" />
+            <div class="feature-text-content">
+              <h3>Confiança</h3>
+              <p>Total confiança no nosso trabalho!</p>
+            </div>
+          </div>
+          <div class="feature-card-item">
+            <img src="static/images/disponinilidade2.png" alt="Feature" />
+            <div class="feature-text-content">
+              <h3>Disponibilidade</h3>
+              <p>Qualquer hora e em qualquer momento!</p>
+            </div>
+          </div>
+          <div class="feature-card-item">
+            <img src="static/images/custo-benificio.png" alt="Feature" />
+            <div class="feature-text-content">
+              <h3>Custos benficios</h3>
+              <p>O melhor preço para voce!</p>
+            </div>
+          </div>
+          <div class="feature-card-item">
+            <img src="static/images/segurança.png" alt="Feature" />
+            <div class="feature-text-content">
+              <h3>Segurança</h3>
+              <p>Seguro em todos os aspetos</p>
+            </div>
+          </div>
+          <!-- <div class="feature-card-item">
+            <img src="images/feature-planet.png" alt="Feature" />
+            <div class="feature-text-content">
+              <h3>Tecnologico</h3>
+              <p>xfgnfgnfgnxfghnfxgn</p>
+            </div> -->
+          <!-- </div>
+          <div class="feature-card-item">
+            <img src="images/feature-planet.png" alt="Feature" />
+            <div class="feature-text-content">
+              <h3>Sociavel</h3>
+              <p>gcnbsztdfbntsnbfg</p>
+            </div>
+          </div>
+        </div>
+      </div> -->
+    </section>
+
+    <footer>
+      <div class="main">
+        <div class="content footer-links">
+          <div class="footer-company">
+            <h4>Empresa</h4>
+            <h6>Sobre</h6>
+            <h6>Contacto</h6>
+            <h6>Aluguer</h6>
+          </div>
+          <div class="footer-rental">
+            <h4>Aluguer</h4>
+            <h6>+18</h6>
+            <h6>Identificação da carta de motorista</h6>
+            <h6>Identificação Pessoal</h6>
+          </div>
+          <div class="footer-social">
+            <h4>Esteja conectado conosco</h4>
+            <div class="social-icons">
+              <img src="static/images/instagram.png" alt="Instagram" />
+              <img src="static/images/facebook.png" alt="Facebook" />
+              <img src="static/images/whatsap.png" alt="Whatsap" />
+              
+            </div>
+          </div>
+          <div class="footer-contact">
+            <h4>Contacta-nos</h4>
+            <h6>+238 232 32 18 </h6>
+            <h6>RENTALCAR.CV@gmail.com</h6>
+            <h6>São Vicente,Cabo Verde</h6>
+            <h6></h6>
+          </div>
+        </div>
+      </div>
+      <div class="last">GRUPO 2- Diego Duarte, Nuno Leite, Tiago Santos, Rodrigo Melicio</div>
+    </footer>
+  </body>
+</html
